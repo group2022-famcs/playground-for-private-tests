@@ -16,11 +16,14 @@ jobs:
           configurePreset: default
           buildPreset: default
 
+      - name: 'Tar artifacts'
+        run: tar -cvf test_oracle.tar builds/default/oracle/test_oracle
+
       - name: Upload binaries
         uses: actions/upload-artifact@v3
         with:
           name: test_oracle
-          path: builds/default/oracle/test_oracle
+          path: test_oracle.tar
           retention-days: 1
 
   test_job:
@@ -34,6 +37,9 @@ jobs:
         with:
           name: test_oracle
 
+      - name: 'Untar artifacts'
+        run: tar -xvf test_oracle.tar
+
       - shell: bash
         run: |
-          ./test_oracle
+          ./builds/default/oracle/test_oracle
