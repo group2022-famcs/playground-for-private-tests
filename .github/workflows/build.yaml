@@ -1,8 +1,8 @@
-name: Build all
+name: Tests
 on: [push, workflow_dispatch]
 jobs:
   job:
-    name: build
+    name: configure & build & test
     runs-on: ubuntu-latest
 
     steps:
@@ -10,10 +10,9 @@ jobs:
 
       - uses: lukka/get-cmake@v.3.23.2
 
-      - run: mkdir -p "${{ github.workspace }}/builds/default"
-
       - name: Run CMake to build
         uses: lukka/run-cmake@v10
         with:
           configurePreset: default
           buildPreset: default
+          testPreset: default
