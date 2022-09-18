@@ -36,4 +36,4 @@ jobs:
 
       - shell: bash
         run: |
-          ./builds/default/oracle/test_oracle
+          ./test_oracle
