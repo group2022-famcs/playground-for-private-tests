@@ -1,4 +1,4 @@
-name: Tests
+name: Submission
 on: [push, workflow_dispatch]
 jobs:
   build_job:
@@ -16,10 +16,10 @@ jobs:
           configurePreset: default
           buildPreset: default
 
-      - name: 'Tar artifacts'
+      - name: Tar artifacts
         run: tar -cvf test_oracle.tar builds/default/oracle/test_oracle
 
-      - name: Upload binaries
+      - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
           name: test_oracle
@@ -32,12 +32,12 @@ jobs:
     needs: build_job
 
     steps:
-      - name: Download test binary
+      - name: Download build artifacts
         uses: actions/download-artifact@v3
         with:
           name: test_oracle
 
-      - name: 'Untar artifacts'
+      - name: Untar artifacts
         run: tar -xvf test_oracle.tar
 
       - shell: bash
