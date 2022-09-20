@@ -1,5 +1,9 @@
 name: Submission
-on: [push, workflow_dispatch]
+on:
+  workflow_run:
+    workflows: ["Looking for roadmen, gangsters and proper naughty boys"]
+    types:
+      - completed
 jobs:
   build_job:
     name: configure & build
