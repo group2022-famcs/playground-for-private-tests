@@ -1,0 +1,22 @@
+name: Looking for roadmen, gangsters and proper naughty boys
+
+on:
+  pull_request_target:
+
+jobs:
+  job:
+    name: Compare submission workflow config with canonical one
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: pull_request
+
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          path: base
+
+      - run: cmp pull_request/.github/workflows/submission.yaml base/.github/workflows/submission.yaml
+
