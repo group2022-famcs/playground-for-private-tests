@@ -1,3 +1,3 @@
 #include "oracle.h"
 
-int Oracle::GiveTheAnswer() const { return 42; }
+int Oracle::GiveTheAnswer() const { return 43; }
