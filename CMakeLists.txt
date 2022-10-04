@@ -11,5 +11,7 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
+include(tools/BuildFlags.cmake)
+
 add_subdirectory(oracle)
 add_subdirectory(adviser)
