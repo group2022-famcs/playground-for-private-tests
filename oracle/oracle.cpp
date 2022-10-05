@@ -2,3 +2,4 @@
 
 int Oracle::GiveTheAnswer() const { return 42; }
 //
+//
